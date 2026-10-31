@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SensorForge – Privacy Policy</title>
+<style>
+:root{--bg:#141416;--card:#1e1e21;--text:#ececee;--muted:#a3a3a9;--accent:#ee7440;--border:#2c2c30}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+main{max-width:720px;margin:0 auto;padding:40px 20px 64px}
+.tag{font:600 13px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;color:var(--muted);border-left:3px solid var(--accent);padding-left:8px}
+h1{font-size:32px;line-height:1.2;margin:14px 0 4px}
+h2{font-size:19px;margin:32px 0 6px}
+p,li{color:var(--text)}
+.muted{color:var(--muted)}
+ul{padding-left:20px}
+a{color:var(--accent)}
+.box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 20px;margin:24px 0}
+footer{margin-top:48px;color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+<main>
+<div class="tag">SENSORFORGE</div>
+<h1>Privacy Policy</h1>
+<p class="muted">Last updated: 31 October 2026</p>
+
+<div class="box">
+<strong>In short:</strong> SensorForge has no accounts, no analytics, no ads and no tracking. The developer runs no servers and receives none of your data. Everything you record stays on your iPhone unless you send it somewhere yourself.
+</div>
+
+<p>This policy explains how the SensorForge iOS app (“the app”) handles information. The app is developed by Nuutti Santaniemi (“we”), an independent developer in Finland.</p>
+
+<h2>Data we collect</h2>
+<p>None. We do not collect, receive, store or sell any personal data. The app contains no third-party analytics, advertising or tracking SDKs, and it does not track you across apps or websites.</p>
+
+<h2>Sensor recordings</h2>
+<p>The app connects to Polar sensors over Bluetooth and records the signals you choose (for example heart rate, RR intervals, ECG, PPG, accelerometer, gyroscope and magnetometer). Recordings are saved as CSV files and a <code>session.json</code> file in the app's Documents folder on your device. You can view, share or delete them at any time, for example through the Files app. Deleting the app deletes the recordings.</p>
+
+<h2>Session context</h2>
+<p>Each recording includes basic phone state at the start and end of the session: battery level and charging state, Low Power Mode, thermal state, free storage and region setting. This is stored only in the session file on your device.</p>
+
+<h2>Location and weather (optional, off by default)</h2>
+<p>If you turn on Location in the app's settings and grant permission, the app takes a single location reading at the start and end of a recording, either approximate (about 1 km) or precise, depending on your choice. The location, a place name and, if Weather is on, the current weather are saved in the session file on your device.</p>
+<p>To get the place name and weather, the location is sent to Apple's geocoding and WeatherKit services. Apple handles that data under its own <a href="https://www.apple.com/legal/privacy/">privacy policy</a>. We never receive it. The app does not track your location in the background.</p>
+
+<h2>Exports you start yourself</h2>
+<ul>
+<li><strong>Sharing:</strong> when you share or export files, they go to the app or service you choose (AirDrop, Files, email and so on).</li>
+<li><strong>S3 upload (Pro):</strong> if you configure upload, files are sent directly from your phone to the storage bucket you specify (for example AWS S3, Cloudflare R2 or MinIO). Your access keys are stored in the iOS Keychain on your device.</li>
+<li><strong>Live streaming API (Pro):</strong> if you turn it on, live sensor data is sent to devices on your local network or to a server address you enter. Any access token is stored in the iOS Keychain.</li>
+</ul>
+<p>In all of these cases the data goes only where you send it; it never passes through us.</p>
+
+<h2>Purchases</h2>
+<p>SensorForge Pro is a one-time in-app purchase handled by Apple. We do not receive your name, payment details or Apple ID. The app only checks with Apple whether Pro has been purchased on your account.</p>
+
+<h2>Health information</h2>
+<p>Recordings can contain physiological data. Because it stays on your device and with the services you choose, you are in control of it. The app does not read from or write to Apple Health. SensorForge is a data-logging tool, not a medical device, and is not intended for diagnosis or treatment.</p>
+
+<h2>Children</h2>
+<p>The app is not directed at children and collects no data from anyone.</p>
+
+<h2>Your rights</h2>
+<p>Since we hold no personal data about you, there is nothing for us to access, correct or delete. Your recordings are under your control on your device. If you are in the EU, you also have the right to lodge a complaint with your data protection authority (in Finland, the <a href="https://tietosuoja.fi/en">Data Protection Ombudsman</a>).</p>
+
+<h2>Changes</h2>
+<p>If this policy changes, the updated version will be posted on this page with a new date.</p>
+
+<h2>Contact</h2>
+<p>Questions about privacy: see the <a href="../support/">support page</a>.</p>
+
+<footer>© 2026 Nuutti Santaniemi · <a href="../">SensorForge</a> · <a href="../support/">Support</a></footer>
+</main>
+</body>
+</html>
