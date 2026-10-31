@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SensorForge – Support</title>
+<style>
+:root{--bg:#141416;--card:#1e1e21;--text:#ececee;--muted:#a3a3a9;--accent:#ee7440;--border:#2c2c30}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+main{max-width:720px;margin:0 auto;padding:40px 20px 64px}
+.tag{font:600 13px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;color:var(--muted);border-left:3px solid var(--accent);padding-left:8px}
+h1{font-size:32px;line-height:1.2;margin:14px 0 4px}
+h2{font-size:19px;margin:32px 0 6px}
+.muted{color:var(--muted)}
+a{color:var(--accent)}
+.box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 20px;margin:24px 0}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;padding:10px 18px;border-radius:999px;margin-top:6px}
+footer{margin-top:48px;color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+<main>
+<div class="tag">SENSORFORGE</div>
+<h1>Support</h1>
+<p class="muted">Help with the SensorForge research logger for Polar sensors.</p>
+
+<div class="box">
+<strong>Contact</strong><br>
+Report a problem or ask a question by opening an issue. Include your iPhone model, iOS version, app version (Settings › About) and the sensor you use.<br>
+<a class="btn" href="https://github.com/Nsantis/sensorforge/issues/new">Contact support</a>
+</div>
+
+<h2>Where are my recordings?</h2>
+<p>Each session is a folder of CSV files plus <code>session.json</code> in the app's Documents folder. Open the Files app › On My iPhone › SensorForge, or connect the phone to a Mac and use Finder. You can also share a session from the Logs tab.</p>
+
+<h2>My sensor doesn't connect</h2>
+<p>Make sure Bluetooth is on, the sensor is awake and worn (chest straps need moisture), and it isn't connected to another app such as Polar Flow. Then remove it in SensorForge and add it again.</p>
+
+<h2>Weather or location is missing from a session</h2>
+<p>Location is off by default. Turn it on in Settings › Environment and allow location access when iOS asks. If a fix isn't available within 10 seconds, the reason is written to the <code>notes</code> field of the session file.</p>
+
+<h2>Restoring SensorForge Pro</h2>
+<p>Pro is a one-time purchase tied to your Apple ID. On a new or reset device, open the paywall and tap <em>Restore purchases</em>.</p>
+
+<h2>Privacy</h2>
+<p>SensorForge collects no personal data. Read the <a href="../privacy/">privacy policy</a>.</p>
+
+<footer>© 2026 Nuutti Santaniemi · <a href="../">SensorForge</a> · <a href="../privacy/">Privacy</a></footer>
+</main>
+</body>
+</html>
