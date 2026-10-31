@@ -4,14 +4,30 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SensorForge</title>
+<meta name="description" content="Record raw ECG, PPG, accelerometer, heart rate and RR data from Polar sensors on iPhone, as plain CSV files you own. Example analysis notebooks on GitHub.">
 <style>
-:root{--bg:#141416;--text:#ececee;--muted:#a3a3a9;--accent:#ee7440}
+:root{--bg:#141416;--card:#1e1e21;--text:#ececee;--muted:#a3a3a9;--accent:#ee7440;--border:#2c2c30;--plot:#16181c}
+*{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
 main{max-width:720px;margin:0 auto;padding:64px 20px}
 .tag{font:600 13px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;color:var(--muted);border-left:3px solid var(--accent);padding-left:8px}
 h1{font-size:36px;line-height:1.15;margin:14px 0 8px}
+h2{font-size:24px;line-height:1.2;margin:56px 0 8px}
 p{color:var(--muted)}
 a{color:var(--accent)}
+code{font:14px ui-monospace,SFMono-Regular,Menlo,monospace}
+figure{margin:28px 0 0;padding:12px;background:var(--plot);border:1px solid var(--border);border-radius:14px}
+figure img{display:block;width:100%;height:auto;border-radius:8px}
+figcaption{margin:10px 4px 2px;font-size:15px;color:var(--muted)}
+figcaption strong{color:var(--text)}
+.box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 20px;margin:24px 0}
+.box ul{margin:8px 0 0;padding-left:20px}
+.box li{margin:6px 0;color:var(--muted)}
+.box li strong{color:var(--text)}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;padding:10px 18px;border-radius:999px;margin-top:10px}
+footer{margin-top:56px;color:var(--muted);font-size:14px}
+@media (min-width:900px){figure{margin-left:-80px;margin-right:-80px}}
+@media (max-width:560px){figure{padding:6px;border-radius:10px}}
 </style>
 </head>
 <body>
@@ -19,7 +35,44 @@ a{color:var(--accent)}
 <div class="tag">SENSORFORGE</div>
 <h1>Research logger for Polar sensors</h1>
 <p>Record raw ECG, PPG, accelerometer, heart rate and RR data from Polar sensors on iPhone, as plain CSV files you own.</p>
-<p><a href="privacy/">Privacy policy</a> · <a href="support/">Support</a></p>
+<p><a href="privacy/">Privacy policy</a> · <a href="support/">Support</a> · <a href="https://github.com/Nsantis/sensorforge-examples">Example notebooks</a></p>
+
+<h2>What the data looks like</h2>
+<p>A real recording: a Polar H10 on the chest and a Polar Verity Sense on the upper arm, worn for 4.8 hours on an ordinary day out, lunch included. Every figure below was plotted straight from the raw CSV files with pandas, SciPy and Matplotlib. The notebooks and a 30-minute excerpt of this log are <a href="https://github.com/Nsantis/sensorforge-examples">on GitHub</a>.</p>
+
+<figure>
+<img src="assets/analysis/all-signals.webp" width="1800" height="1350" loading="lazy" alt="Eight seconds of six raw streams on one time axis: ECG, filtered PPG, chest and arm acceleration, gyroscope and magnetometer, with vertical lines at the ECG R peaks.">
+<figcaption><strong>Eight seconds, six streams, one clock.</strong> ECG and acceleration from the chest strap; PPG, acceleration, gyroscope and magnetometer from the arm sensor. The vertical lines mark ECG R peaks, so each beat can be followed across both sensors.</figcaption>
+</figure>
+
+<figure>
+<img src="assets/analysis/ppg-spectrogram.webp" width="1800" height="630" loading="lazy" alt="Time–frequency spectrogram of 4.8 hours of PPG. A bright band between 60 and 100 beats per minute traces the heart rate through the day.">
+<figcaption><strong>The whole day as a PPG spectrogram.</strong> Raw optical signal from the upper arm, 16-second windows. The bright band is the heart rate, its second harmonic sits faintly above it, and the narrow gaps are Bluetooth dropouts, each one logged in <code>session.json</code>.</figcaption>
+</figure>
+
+<figure>
+<img src="assets/analysis/ppg-spectrogram-zoom.webp" width="1800" height="570" loading="lazy" alt="Fifteen-minute PPG spectrogram with the chest strap's heart rate drawn on top; the line runs along the bright band.">
+<figcaption><strong>Zoomed in: fifteen minutes around lunch.</strong> 8-second windows, with the H10's heart rate drawn on top. The optical heart-rate band from the arm and the ECG-based heart rate from the chest follow each other.</figcaption>
+</figure>
+
+<figure>
+<img src="assets/analysis/hrv-poincare.webp" width="1800" height="600" loading="lazy" alt="Three panels: a Poincaré density plot of all beat pairs, a Poincaré plot of a 5-minute rest window with its SD1/SD2 ellipse, and the RR spectrum of that window split into VLF, LF and HF bands.">
+<figcaption><strong>HRV from the H10's RR intervals.</strong> Poincaré plot of every beat pair in the recording, a quiet 5-minute window with its SD1/SD2 ellipse, and that window's spectrum split into VLF, LF and HF bands.</figcaption>
+</figure>
+
+<h2>Example notebooks</h2>
+<p>Free, MIT-licensed Jupyter notebooks with real example data. They run on your own computer, in VS Code or in Google Colab, need only pandas, NumPy, SciPy and Matplotlib, and send your data nowhere.</p>
+<div class="box">
+<ul>
+<li><strong>01 · Getting started:</strong> load a log, check sample rates, gaps and clock alignment, HRV per marker segment, ECG R-peaks, a tidy 1-second export</li>
+<li><strong>02 · All signals on one clock:</strong> every stream on one zoomable time axis, and the pulse arrival time from an ECG-triggered PPG average</li>
+<li><strong>03 · PPG time–frequency analysis:</strong> a spectrogram that refines as you zoom, heart rate from PPG vs. ECG</li>
+<li><strong>04 · Heart-rate variability:</strong> RR cleaning, time, frequency and Poincaré metrics, RR (ECG) vs. PPI (optical)</li>
+</ul>
+<a class="btn" href="https://github.com/Nsantis/sensorforge-examples">Open on GitHub</a>
+</div>
+
+<footer>© 2026 Nuutti Santaniemi · <a href="privacy/">Privacy</a> · <a href="support/">Support</a> · <a href="https://github.com/Nsantis/sensorforge-examples">Examples</a> · Not affiliated with Polar Electro Oy.</footer>
 </main>
 </body>
 </html>
